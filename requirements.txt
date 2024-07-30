@@ -1,0 +1,4 @@
+openai
+pytubefix
+python-dotenv
+streamlit
