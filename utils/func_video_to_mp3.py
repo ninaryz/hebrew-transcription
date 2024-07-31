@@ -11,7 +11,6 @@ def video_to_mp3(url, download_path):
     
     # Clean the title for use in filenames
     safe_title = yt.title.replace(":", "_").replace("/", "_").replace("\\", "_").replace("?", "_").replace("!", "_")
-    print(f"Safe title: {safe_title}")
 
     ys = yt.streams.get_audio_only()
     
@@ -29,7 +28,7 @@ def video_to_mp3(url, download_path):
     # Rename the file
     os.rename(temp_file, new_file_path)
     
-    print(new_file_path)
+    return new_file_path
 
 if __name__ == "__main__":
     video_to_mp3(url="https://youtu.be/uryecU-Ttww", download_path=r"C:\Users\marc-\Documents\OneDrive\Documents\Loisirs\coding-projects\hebrew-transcription\mp3-files")
