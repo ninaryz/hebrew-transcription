@@ -1,6 +1,6 @@
 venv/
 *.mp3
-/utils/myenv.env
+utils/myenv.env
 *.pyc
 *.pyo
 __pycache__/
