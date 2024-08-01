@@ -1,12 +1,10 @@
 from openai import OpenAI
-from utils.func_video_to_mp3 import video_to_mp3
-from dotenv import find_dotenv, load_dotenv
-import os
-import json
-import re
+from func_video_to_mp3 import video_to_mp3
+import tempfile
 
-def create_api_client():
-    client = OpenAI()
+
+def create_api_client(api_key):
+    client = OpenAI(api_key=api_key)
     return client
 
 def transcription_api_call(audio_file, client):
@@ -36,21 +34,22 @@ def translation_api_call(transcript, client):
     return translation.choices[0].message.content
 
 
-def main(url):
-    load_dotenv(dotenv_path=r"C:\Users\marc-\Documents\OneDrive\Documents\Loisirs\coding-projects\hebrew-transcription\utils\myenv.env")
-    download_path=r"C:\Users\marc-\Documents\OneDrive\Documents\Loisirs\coding-projects\hebrew-transcription\mp3-files"
+def main(url, api_key):
+    with tempfile.TemporaryDirectory() as temp_dir:
     
-    audio_file_path = video_to_mp3(url=url, download_path=download_path)
-    audio_file= open(audio_file_path, "rb")
-    client = create_api_client()
-    transcript = transcription_api_call(audio_file=audio_file, client=client)
-    translation = translation_api_call(transcript=transcript, client=client)
+        audio_file_path = video_to_mp3(url=url, temp_dir=temp_dir)
+        
+        with open(audio_file_path, "rb") as audio_file:
+            client = create_api_client(api_key=api_key)
+            transcript = transcription_api_call(audio_file=audio_file, client=client)
+            translation = translation_api_call(transcript=transcript, client=client)
 
-    return transcript, translation
+        return transcript, translation
 
 
 
 if __name__ == "__main__":
-    main(url="https://youtu.be/uryecU-Ttww")
-
+    transcript, translation = main(url="https://youtu.be/uryecU-Ttww", _)
+    print(transcript)
+    print(translation)
 
