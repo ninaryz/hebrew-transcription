@@ -24,6 +24,3 @@ def video_to_mp3(url, temp_dir):
     # Return the path of the new file
     return new_file_path
 
-
-if __name__ == "__main__":
-    # video_to_mp3(url="https://youtu.be/uryecU-Ttww", download_path=r"C:\Users\marc-\Documents\OneDrive\Documents\Loisirs\coding-projects\hebrew-transcription\mp3-files")

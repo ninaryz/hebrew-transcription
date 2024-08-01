@@ -1,5 +1,5 @@
 from openai import OpenAI
-from func_video_to_mp3 import video_to_mp3
+from utils.func_video_to_mp3 import video_to_mp3
 import tempfile
 
 
@@ -47,9 +47,4 @@ def main(url, api_key):
         return transcript, translation
 
 
-
-if __name__ == "__main__":
-    # transcript, translation = main(url="https://youtu.be/uryecU-Ttww", api_key=api_key)
-    # print(transcript)
-    # print(translation)
 
