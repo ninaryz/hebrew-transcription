@@ -49,7 +49,7 @@ def main(url, api_key):
 
 
 if __name__ == "__main__":
-    transcript, translation = main(url="https://youtu.be/uryecU-Ttww", _)
-    print(transcript)
-    print(translation)
+    # transcript, translation = main(url="https://youtu.be/uryecU-Ttww", api_key=api_key)
+    # print(transcript)
+    # print(translation)
 
